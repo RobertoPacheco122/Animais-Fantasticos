@@ -1,6 +1,6 @@
 import initTabNav from "./modules/initTabNav.js";
 import initAccordionList from "./modules/initAccordionList.js";
-import initSmoothScroll from "./modules/initSmoothScroll.js";
+import SmoothScroll from "./modules/initSmoothScroll.js";
 import initAnimationScroll from "./modules/initAnimationScroll.js";
 import initModal from "./modules/initiModal.js";
 import initTooltip from "./modules/initToolTip.js";
@@ -11,7 +11,9 @@ import initBitcoinFetch from "./modules/initBitcoinFetch.js";
 
 initTabNav();
 initAccordionList();
-initSmoothScroll();
+const smoothScroll = new SmoothScroll('a[href^="#"]');
+smoothScroll.init();
+
 initAnimationScroll();
 initModal();
 initTooltip();
