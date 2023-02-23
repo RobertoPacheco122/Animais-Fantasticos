@@ -1,4 +1,4 @@
-export default function initTabNav() {
+/* export default function initTabNav() {
   const tabMenu = document.querySelectorAll("[data-tab='menu'] li");
   const tabContent = document.querySelectorAll("[data-tab='content'] section");
 
@@ -6,8 +6,8 @@ export default function initTabNav() {
     tabContent.forEach((content) => {
       content.classList.remove("ativo");
     });
-    const dataSetValue = tabContent[index].dataset.anime;
-    tabContent[index].classList.add("ativo", dataSetValue);
+    const animationDirection = tabContent[index].dataset.anime;
+    tabContent[index].classList.add("ativo", animationDirection);
   }
 
   tabMenu.forEach((image, index) => {
@@ -17,4 +17,43 @@ export default function initTabNav() {
   });
 
   tabContent[0].classList.add("ativo");
+}
+ */
+
+export default class TabNav {
+  constructor(tabMenu, tabContent, activeClass) {
+    this.tabMenu = document.querySelectorAll(tabMenu);
+    this.tabContent = document.querySelectorAll(tabContent);
+
+    if (activeClass === undefined) {
+      this.activeClass = "ativo";
+    } else {
+      this.activeClass = activeClass;
+    }
+  }
+
+  showTabContent(index) {
+    this.tabContent.forEach((content) => {
+      content.classList.remove(this.activeClass);
+    });
+    const animationDirection = this.tabContent[index].dataset.anime;
+    this.tabContent[index].classList.add(this.activeClass, animationDirection);
+  }
+
+  addTabMenuEvent() {
+    this.tabMenu.forEach((image, index) => {
+      image.addEventListener("click", () => {
+        this.showTabContent(index);
+      });
+    });
+  }
+
+  init() {
+    if (this.tabMenu.length && this.tabContent.length) {
+      this.addTabMenuEvent();
+      this.tabContent[0].classList.add(this.activeClass);
+    }
+
+    return this;
+  }
 }
