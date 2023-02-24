@@ -25,7 +25,6 @@ export default class Modal {
     this.openModalButton.addEventListener("click", this.eventToggleModal);
     this.closeModalButton.addEventListener("click", this.eventToggleModal);
     this.modalContainer.addEventListener("click", this.clickOutsideModal);
-    console.log("entrei");
   }
 
   init() {
