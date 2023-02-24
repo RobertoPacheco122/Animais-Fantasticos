@@ -3,7 +3,7 @@ import AccordionList from "./modules/initAccordionList.js";
 import TabNav from "./modules/initTabNav.js";
 import initAnimationScroll from "./modules/initAnimationScroll.js";
 import Modal from "./modules/initiModal.js";
-import initTooltip from "./modules/initToolTip.js";
+import Tooltip from "./modules/initToolTip.js";
 import initDropdownMenu from "./modules/initDropdown-menu.js";
 import initOpeningSchedule from "./modules/initOpeningSchedule.js";
 import initAnimalsFetch from "./modules/initAnimalsFetch.js";
@@ -28,8 +28,10 @@ const modal = new Modal(
 );
 modal.init();
 
+const toolTip = new Tooltip("[data-tooltip]");
+toolTip.init();
+
 initAnimationScroll();
-initTooltip();
 initDropdownMenu();
 initOpeningSchedule();
 initAnimalsFetch();
