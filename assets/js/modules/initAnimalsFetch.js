@@ -1,4 +1,4 @@
-import initAnimaNumbers from "./initAnimaNumbers.js";
+import AnimaNumbers from "./initAnimaNumbers.js";
 
 export default function initAnimalsFetch() {
   const url = "./animalsFetch.json";
@@ -22,7 +22,8 @@ export default function initAnimalsFetch() {
       createAnimal(specie);
     });
 
-    initAnimaNumbers();
+    const animaNumbers = new AnimaNumbers("[data-numero]", ".numeros", "ativo");
+    animaNumbers.init();
   }
 
   getAllSpecies();
