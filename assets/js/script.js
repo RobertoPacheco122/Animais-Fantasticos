@@ -40,7 +40,5 @@ dropdownMenu.init();
 const openingSchedule = new OpeningSchedule("[data-week]");
 openingSchedule.init();
 
-console.log(openingSchedule);
-
 initAnimalsFetch();
 initBitcoinFetch();
