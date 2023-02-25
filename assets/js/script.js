@@ -5,7 +5,7 @@ import Modal from "./modules/initiModal.js";
 import Tooltip from "./modules/initToolTip.js";
 import AnimaScroll from "./modules/initAnimationScroll.js";
 import DropdownMenu from "./modules/initDropdown-menu.js";
-import initOpeningSchedule from "./modules/initOpeningSchedule.js";
+import OpeningSchedule from "./modules/initOpeningSchedule.js";
 import initAnimalsFetch from "./modules/initAnimalsFetch.js";
 import initBitcoinFetch from "./modules/initBitcoinFetch.js";
 
@@ -37,6 +37,10 @@ animaScroll.init();
 const dropdownMenu = new DropdownMenu("[data-dropdown]");
 dropdownMenu.init();
 
-initOpeningSchedule();
+const openingSchedule = new OpeningSchedule("[data-week]");
+openingSchedule.init();
+
+console.log(openingSchedule);
+
 initAnimalsFetch();
 initBitcoinFetch();
