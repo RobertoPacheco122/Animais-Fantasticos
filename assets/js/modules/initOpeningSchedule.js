@@ -1,15 +1,41 @@
-export default function initOpeningSchedule() {
-  const dateNow = new Date();
-  const dayNow = dateNow.getDay();
-  const hoursNow = dateNow.getHours();
-  const opening = document.querySelector("[data-week]");
-  const openingDays = opening.dataset.week.split(",").map(Number);
-  const openingHours = opening.dataset.hour.split(",").map(Number);
+export default class OpeningSchedule {
+  constructor(opening, openClass) {
+    this.opening = document.querySelector(opening);
+    if (openClass === undefined) this.openClass = "aberto";
+    else this.openClass = openClass;
+  }
 
-  const compareDay = openingDays.includes(dayNow);
-  const compareHour = hoursNow > openingHours[0] && hoursNow < openingHours[1];
+  scheduleData() {
+    this.openingDays = this.opening.dataset.week.split(",").map(Number);
+    this.openingHours = this.opening.dataset.hour.split(",").map(Number);
+  }
 
-  if (compareHour && compareDay) {
-    opening.classList.add("aberto");
+  nowData() {
+    this.dateNow = new Date();
+    this.dayNow = this.dateNow.getDay();
+    this.hoursNow = this.dateNow.getUTCHours() - 3;
+  }
+
+  checkSchedule() {
+    this.compareDay = this.openingDays.includes(this.dayNow);
+    this.compareHour =
+      this.hoursNow > this.openingHours[0] &&
+      this.hoursNow < this.openingHours[1];
+    return this.compareDay && this.compareHour;
+  }
+
+  checkIsOpened() {
+    if (this.checkSchedule()) {
+      this.opening.classList.add("aberto");
+    }
+  }
+
+  init() {
+    if (this.opening) {
+      this.scheduleData();
+      this.nowData();
+      this.checkIsOpened();
+    }
+    return this;
   }
 }
